@@ -1,0 +1,26 @@
+{
+  "name": "module-12-challenge",
+  "version": "1.0.0",
+  "description": "Team profile generator",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ricJ14/module-12-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ricJ14/module-12-challenge/issues"
+  },
+  "homepage": "https://github.com/ricJ14/module-12-challenge#readme",
+  "dependencies": {
+    "inquirer": "^8.2.2",
+    "jest": "^29.4.3"
+  }
+}
