@@ -19,41 +19,70 @@ const teamMembers = []
 const appMenu = () => {
 
 function buildTeam(){
-
+    if(!fs.existsSync(OUTPUT_DIR)) {
+        fs.mkdirSync(OUTPUT_DIR)
+    }
+    fs.writeFileSync(outputPath, render(teamMembers), "utf-8");
 }    
 
-
 function addIntern(){
-    
+    inquirer.prompt([
+        {
+           type: "input",
+           name: "internName",
+           message: "What is your intern name?"
+        },
+        {
+           type: "input",
+           name: "internId",
+           message: "What is your intern id?"
+        },
+        {
+           type: "input",
+           name: "internEmail",
+           message: "What is your intern email?"
+        },
+        {
+           type: "input",
+           name: "internSchool",
+           message: "What is your intern school?"
+        },
+    ]).then(answers => {
+        const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
+        teamMembers.push(intern);
+        idList.push(answers.internId);
+        // console.log(intern);
+        createTeam();
+    })
 }
 
 function addEngineer(){
     inquirer.prompt([
         {
            type: "input",
-           value: "engineerName",
+           name: "engineerName",
            message: "What is your engineer name?"
         },
         {
            type: "input",
-           value: "engineerId",
+           name: "engineerId",
            message: "What is your engineer id?"
         },
         {
            type: "input",
-           value: "engineerEmail",
+           name: "engineerEmail",
            message: "What is your engineer email?"
         },
         {
            type: "input",
-           value: "engineerGithub",
+           name: "engineerGithub",
            message: "What is your engineer github?"
         },
     ]).then(answers => {
         const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
         teamMembers.push(engineer);
         idList.push(answers.engineerId);
-        console.log(engineer);
+        // console.log(engineer);
         createTeam();
     })
 }
@@ -64,7 +93,7 @@ function addEngineer(){
                 type: "list",
                 name: "memberChoice",
                 message: "Which type of team member would you like to add?",
-                choice: [
+                choices: [
                     "Engineer",
                     "Intern",
                     "I don't want to add any more team members"
@@ -116,7 +145,7 @@ function addEngineer(){
             }
         ]).then(answers => {
             const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
-            console.log(manager);
+            // console.log(manager);
             teamMembers.push(manager);
             idList.push(answers.managerId);
             createTeam();
