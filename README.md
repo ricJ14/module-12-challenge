@@ -9,6 +9,6 @@ The task was to take the starter code and convert it into a working Node.js comm
 
 First I needed to add the relevant dependencies (inquier and Jest), then I created the relevent js files for the lib folder. These files consisted of the object models. I then completed the Code used to gather information about the development team members, and render it to the HTML file.
 
-
+![website](https://ricj14.github.io/module-12-challenge/)
 
 ![screenshot of website](assets/Module-12-challenge_screenshot.png)
